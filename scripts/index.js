@@ -159,7 +159,7 @@ Vue.createApp({
     var error = null
 
     try {
-      const res = await fetch('https://6282938ced9edf7bd886bc0a.mockapi.io/pizzaApi')
+      const res = await fetch('https://6282938ced9edf7bd886bc')
       const date = await res.json()
       this.pizzaArray = date
     }catch(err) {
