@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="./styles/pageOne.css">
+
+  <!-- fonts -->
+  <link rel="stylesheet" href="./assets/fonts/ProximaNova/stylesheet.css">
+</head>
+<body>
+  <!--  -->
+  <div id="app">
+
+    <!-- loader -->
+    <div class="container__lds-ring" v-if="loaderShow">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <!-- message -->
+    <h2 class="messagePizza" v-if="messagePizzaRerror" v-cloak>Ошибка 404</h2>
+    
+    <header class="header" id="header" v-cloak>
+      <div class="header__mainBox">
+        <img src="./assets/icons/logo.svg" alt="pizza">
+        <span class="header__logo header__logo_span">
+          <h2 class="header__logo_title">REACT PIZZA</h2>
+          <p class="header__logo_dbtitle">самая вкусная пицца во вселенной</p>
+        </span>
+  
+        <div class="header__shoppingCart" v-if="currentPage !== 'cart'" @click="currentPage = 'cart'">
+          <span class="header__shoppingCart_box header__shoppingCart_price">
+            <h2>{{ money }}</h2>
+            <p>₽</p>
+          </span>
+  
+          <div class="header__shoppingCart_border"></div>
+  
+          <span class="header__shoppingCart_box header__shoppingCart_count">
+            <img src="./assets/icons/shoppingCart.svg" alt="shoppingCart">
+            <p>{{ amountCart }}</p>
+          </span>
+        </div>
+      </div>
+      <div class="deathZone" @click="filterShow = false"></div>
+    </header>    
+
+    <main class="main" id="main" v-cloak>
+      <section class="page page__One" v-if="currentPage === 'home'">
+        <div class="main__boxBtn boxBtn">
+         <span> <button class="boxBtn__btn" v-for="(btn, index) in arrayBtn" :key="index" @click="switchBtn(btn, index)" :class="{ active:index === activeBtn }">{{ btn.title }}</button> </span>
+  
+          <div class="boxBtn__text">
+            <img src="./assets/icons/arrowUp.svg" class="arrow" alt="arrowUp" :class="{ arrowRotate: filterShow }">
+            <h2>Сортировка по: <span class="span_orange" @click="filterShow = !filterShow" >{{ activeFiltersName }}</span></h2>
+  
+            <div class="filter-container" v-if="filterShow" >
+              <p class="filter__element" v-for="(el, index) in arrayFilters" :key="index" @click="switchFilter(el, index)" :class="{ filter__element_active: activeFilters === index }">{{ el.title }}</p>
+            </div>
+          </div>
+        </div>
+  
+        <h2 class="main__tittle">Все пиццы</h2>
+        <div class="main__pizzaContainer" v-if="!loaderShow">
+          <v-card v-for="(card, index) in mainArray" :key="index" :card="card" @add="add"></v-card>
+        </div>
+      </section>
+
+      
+      <section class="page page__Two" v-if="currentPage === 'cart'">
+        <div v-if="shoppingCartArray.length !== 0">
+          <span class="page__Two_span">
+            <span>
+              <img src="./assets/icons/iconfinder_shopping-cart_2561279 1.svg" alt="shoppingCart">
+              <h2 class="page__Two_title">Корзина</h2>
+            </span>
+  
+            <span>
+              <img src="./assets/icons/iconfinder_trash-2_3324927 1.svg" alt="trash">
+              <h2 class="page__Two_subtitle" @click="delAll">Очистить корзину</h2>
+            </span>
+          </span>
+  
+          <div class="container__buy_card">
+            <v-cart v-for="(card, index) in shoppingCartArray" :key="index" :card="card" @minus="minus" @del="del"></v-cart>
+          </div>
+          
+          <div class="buy__card_footer">
+            <div class="buy__card_footerOne">
+              <span class="buy__card_footerAmount"> <h2>Всего пицц: </h2> <h2>{{ amountCart }} шт.</h2> </span>
+              <span class="buy__card_footerSum"> <h2>Сумма заказа: </h2> <h2>{{ sumCart }} ₽</h2> </span>
+            </div>
+  
+            <div class="buy__card_footerTwo">
+              <button @click="currentPage = 'home'">
+                <a href="#"></a>
+                <p>Вернуться назад</p>
+              </button>
+              <button @click="EmptyMoneyShow" :class="{ animEmty: shake }">
+                <p>Оплатить сейчас</p>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="emptyShoppingCart" v-else>
+          <span class="emptyShoppingCart__span">
+            <h2>Корзина пустая</h2>
+            <img src="./assets/icons/smile.svg" alt="smile">
+          </span>
+          <p>
+            Вероятней всего, вы не заказывали ещё пиццу.<br>
+            Для того, чтобы заказать пиццу, перейди на главную страницу.
+          </p>
+          <img src="./assets/img/shopping-cart-colour.jpg" alt="colourCart" class="emptyShoppingCart__img">
+          <button @click="currentPage = 'home'">Вернуться назад</button>
+        </div>
+      </section>
+
+      <div class="deathZone" @click="filterShow = false"></div>
+    </main>
+
+    
+    
+  </div>
+  <!--  -->
+
+  <script src="./scripts/vue.global.js"></script>
+  <script src="./scripts/index.js" type="module"></script>
+</body>
+</html>
