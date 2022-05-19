@@ -291,6 +291,7 @@ main *{
 
 .card__img{
   transform: translate(5%);
+  margin-bottom: 45px;
 }
 
 
@@ -305,9 +306,8 @@ main *{
 .card__svg{
   display: block;
   width: 12px; height: 12px;
-  mask-image: url('../assets/icons/plus.svg');
+  background-image: url('../assets/icons/plus.svg');
   background-size: contain;
-  background: #EB5A1E;
   transition: 0.25s;
 }
 
@@ -337,24 +337,6 @@ main *{
   background: #fff;
   cursor: pointer;
   transition: 0.25s;
-}
-
-.card__span > button:hover{
-  background: #EB5A1E;
-  color: #fff;
-}
-
-.card__span > button:hover > .card__svg{
-  background: #fff;
-}
-
-.card__span > .active__buyBtn:hover{
-  background: #fff;
-  color: #EB5A1E;
-}
-
-.card__span > .active__buyBtn:hover > .card__svg{
-  background: #EB5A1E;
 }
 
 .number__span{
@@ -610,20 +592,12 @@ main *{
 
 .svg__btn_one{
   width: 10px; height: 1.96px;
-  mask-image: url('../assets/icons/VectorOne.svg');
+  background: url('../assets/icons/VectorOne.svg');
 }
 
 .svg__btn_two{
   width: 10px; height: 9.96px;
-  mask-image: url('../assets/icons/VectorTwo.svg');
-}
-
-.buy__card_main > button:hover{
-  background: #FE5F1E;
-}
-
-.buy__card_main > button:hover .svg__btn{
-  background: #fff;
+  background: url('../assets/icons/VectorTwo.svg');
 }
 
 .buy__card_main > p{
@@ -653,10 +627,6 @@ main *{
   border: 1px solid #D7D7D7;
   border-radius: 50%;
   transition: 0.25s;
-}
-
-.exit:hover{
-  background: #D7D7D7;
   cursor: pointer;
 }
 
@@ -667,11 +637,7 @@ main *{
   background: #D7D7D7;
   transition: 0.25s;
   background-repeat: no-repeat;
-  mask-image: url('../assets/icons/VectorFour.svg');
-}
-
-.exit:hover > a{
-  background: #fff;
+  background: url('../assets/icons/VectorFour.svg');
 }
 
 /* buy__card_footer */
@@ -747,9 +713,8 @@ main *{
 .buy__card_footerTwo > button:first-child a{
   display: block;
   width: 6px; height: 12px;
-  mask-image: url('../assets/icons/arrowLeft.svg');
+  background: url('../assets/icons/arrowLeft.svg');
   background-size: contain;
-  background: #D3D3D3;
   transition: 0.25s;
 }
 
@@ -761,21 +726,6 @@ main *{
   color: #D3D3D3;
   transition: 0.25s;
 }
-
-.buy__card_footerTwo > button:first-child:hover{
-  background: #D3D3D3;
-}
-
-.buy__card_footerTwo > button:first-child:hover a{
-  background: #fff;
-}
-
-.buy__card_footerTwo > button:first-child:hover p{
-  color: #fff;
-}
-
-
-
 
 .buy__card_footerTwo > button:last-child{
   border-color: #FE5F1E;
@@ -789,15 +739,6 @@ main *{
   color: #FE5F1E;
   transition: 0.25s;
 }
-
-.buy__card_footerTwo > button:last-child:hover{
-  background: #FE5F1E;
-}
-
-.buy__card_footerTwo > button:last-child:hover p{
-  color: #fff;
-}
-
 
 /* emptyShoppingCart */
 

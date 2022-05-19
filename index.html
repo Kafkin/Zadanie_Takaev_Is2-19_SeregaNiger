@@ -63,7 +63,7 @@
             <img src="./assets/icons/arrowUp.svg" class="arrow" alt="arrowUp" :class="{ arrowRotate: filterShow }">
             <h2>Сортировка по: <span class="span_orange" @click="filterShow = !filterShow" >{{ activeFiltersName }}</span></h2>
   
-            <div class="filter-container" v-if="filterShow" >
+            <div class="filter-container" @click="filterShow = false" v-if="filterShow" >
               <p class="filter__element" v-for="(el, index) in arrayFilters" :key="index" @click="switchFilter(el, index)" :class="{ filter__element_active: activeFilters === index }">{{ el.title }}</p>
             </div>
           </div>

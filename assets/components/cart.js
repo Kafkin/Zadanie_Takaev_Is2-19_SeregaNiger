@@ -1,7 +1,7 @@
 export default {
   template: `
     <div class="buy__card">
-      <img src="./assets/img/pizzaImgOne.jpg" :alt="card.title">
+      <img :src="'./assets/img/' + card.img" :alt="card.title">
       <span class="buy__card_header">
         <h2 class="buy__card_title">{{ card.title }}</h2>
         <p class="buy__card_subtitle">{{ card.parametersOne }}, {{ card.parametersTwo }}</p>

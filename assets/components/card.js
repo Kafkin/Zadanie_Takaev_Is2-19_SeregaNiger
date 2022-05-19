@@ -3,7 +3,7 @@ import vParameters from './parameters.js'
 export default {
   template: `
     <div class="card">
-      <img src="./assets/img/pizzaImgOne.jpg" :alt="card.title" class="card__img" />
+      <img :src="'./assets/img/' + card.img" :alt="card.title" class="card__img" />
       <p class="card__title">{{ card.title }}</p>
       <vParameters :card="card" @add="add"></vParameters>
     </div>
